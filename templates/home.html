@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Lobster&family=Montserrat:wght@100;400;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/styles.css">
+</head>
+<body class="background-body pad">
+<div class="center-content">
+
+    <h1>Hello, Register to Start Your to Do's</h1>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+         <p class="message-error-div">{{ message }}</p>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    <div class="d-grid gap-2 col-6 mx-auto">
+        <a href="{{ url_for('login') }}"  class="button-1" >Login</a>
+        <a href="{{ url_for('register') }}"  class="button-1" >Register</a>
+    </div>
+</div>
+
+</body>
+</html>

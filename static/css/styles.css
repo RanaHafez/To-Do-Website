@@ -1,0 +1,97 @@
+body {
+  background-color: #FFFFDE;
+}
+
+
+.pad {
+   margin: 100px;
+}
+h1{
+  color: #8946A6;
+  font-family: 'Lobster', cursive;
+    font-weight: bold;
+    color: #85586F;
+    font-size: 45px;
+}
+
+.background-body {
+
+}
+.add-task {
+  margin-top: 100px;
+}
+
+.center-content {
+text-align: center;
+}
+
+
+.message-error-div {
+color: red;
+}
+
+#submit{
+    font-size:24px;
+    font-family:Arial;
+    width:200px;
+    height:50px;
+    border-width:0px;
+    color:#fff;
+    border-color:#ffffff;
+    border-top-left-radius:7px;
+    border-top-right-radius:7px;
+    border-bottom-left-radius:7px;
+    border-bottom-right-radius:7px;
+    box-shadow:inset 0px -12px 0px -24px #e67a73;
+    text-shadow:inset 0px 1px 0px #b23e35;
+    background: #FF7396;
+}
+
+/* CSS */
+.button-1 {
+  background-color: #EA4C89;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-1:hover,
+.button-1:focus {
+  background-color: #C499BA;
+}
+  #submit:hover {
+    background: #C499BA;
+}
+
+.center {
+   display: flex;
+   justify-content: center;
+}
+
+.due-date-decoration {
+color: #C21010;
+}
+
+.done-date {
+   color: #7FB77E;
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Account</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Lobster&family=Montserrat:wght@100;400;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/styles.css">
+</head>
+<body class="center-content pad">
+<h1>Register</h1>
+{% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+         <p class="message-error-div">{{ message }}</p>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+         {% if form %}
+         <form class="add-form" method="POST" action="">
+                 {{ form.csrf_token }}
+                 <div>
+                     {{ form.name.label}} <br>
+                     {{ form.name(size=30) }}
+                 </div>
+
+                 <p>
+                     {{ form.email.label}} <br>
+                     {{ form.email(size=30) }}
+                 </p>
+                 <p>
+                     {{ form.password.label}} <br>
+                     {{ form.password(size=30) }}
+                 </p>
+                 {{ form.submit }}
+             </form>
+         {% endif %}
+</body>
+</html>

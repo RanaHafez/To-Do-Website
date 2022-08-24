@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My TO DO LIST</title>
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Lobster&family=Montserrat:wght@100;400;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/styles.css">
+</head>
+<body>
+
+        <a href=" {{ url_for('logout') }} " class="btn btn-info btn-lg"> Logout </a>
+        <div class="container">
+            <div class="row add-task">
+                <div class="card col-lg-4">
+                    <h1>Add Task</h1>
+                    {% if form %}
+                    <form class="add-form" method="POST" action="">
+                 {{ form.csrf_token }}
+                 <div>
+                     {{ form.name.label}} <br>
+                     {{ form.name(size=30) }}
+                 </div>
+
+                 <p>
+                     {{ form.due_date.label}} <br>
+                     {{ form.due_date(size=30) }}
+                 </p>
+                        <p class="due-date-decoration"> * Optional .. </p>
+
+                 {{ form.submit }}
+             </form>
+                    {% endif %}
+                </div>
+                <div class="card col-lg-4">
+                    <h1>💪 🔥 To Do</h1>
+                    {% if to_do %}
+                        <ul class="list-group list-group-flush">
+                            {% for task in to_do %}
+                               <li class="list-group-item"><a href="{{ url_for('mark_done', id=task.id) }}">✔️</a> {{ task.name }} <a href="{{ url_for('delete', id=task.id) }}">🗑️ </a>
+                                   {% if task.due_date %}
+                                        <p>⚠️is due in <span class="due-date-decoration">{{ task.due_date }}</span></p>
+                                   {% endif %}
+                               </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                    <ul>
+                        <ul>
+                            <li>You do not have any task just yet!!</li>
+                        </ul>
+                        <ul>
+                            <li>You can add a task and with a due date .. </li>
+                        </ul>
+                        <ul>
+                            <li> .....  </li>
+                        </ul>
+                        <ul>
+                            <li> ... </li>
+                        </ul>
+                    </ul>
+                    {% endif %}
+                </div>
+                <div class="card col-lg-4">
+                    <h1>🥳 👏 Done Tasks</h1>
+                    {% if done %}
+                        <ul class="list-group list-group-flush">
+                            {% for task in done %}
+                               <li class="list-group-item"> {{ task.name }} <a href="{{ url_for('delete', id=task.id) }}">❌ </a>
+                                   {% if task.due_date %}
+                                       Due <span class="due-date-decoration">{{ task.due_date }}</span>
+                                   {% endif %}
+                    Done in <span class="done-date">{{ task.date_finished }}</span></li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                    <ul>
+                        <ul>
+                            <li>You Have not finished any task just yet!!</li>
+                        </ul>
+                        <ul>
+                            <li>Mark your tasks done by clicking on ✔️ </li>
+                        </ul>
+                        <ul>
+                            <li> .....  </li>
+                        </ul>
+                        <ul>
+                            <li> ... </li>
+                        </ul>
+                    </ul>
+                    {% endif %}
+                </div>
+
+            </div>
+        </div>
+<!--{% if to_do %}-->
+<!--        <div class="card">-->
+<!--            <ul class="list-group list-group-flush">-->
+
+<!--                {% for task in to_do %}-->
+
+<!--            <li class="list-group-item"><a href="{{ url_for('mark_done', id=task.id) }}">✔️</a> {{ task.name }} <a href="{{ url_for('delete', id=task.id) }}">🗑️ </a></li>-->
+
+<!--            {% endfor %}-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--        {% else %}-->
+<!--        <h3>U have not added tasks</h3>-->
+<!--        {% endif %}-->
+<!--        <h1> Done Tasks </h1>-->
+<!--        {% if done %}-->
+<!--        <div class="card">-->
+<!--            <ul class="list-group list-group-flush">-->
+<!--                {% for task in done %}-->
+<!--                <li class="list-group-item"> {{ task.name }} <a href="{{ url_for('delete', id=task.id) }}">❌ </a>Due Date is {{ task.due_date }}-->
+<!--                    Done in {{ task.date_finished }}</li>-->
+<!--                {% endfor %}-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--        {% else %}-->
+<!--        <h3>U have not added tasks</h3>-->
+<!--        {% endif %}-->
+
+</body>
+</html>
